@@ -69,7 +69,23 @@ void remove_dir()
 {
     char dir_name[100];
     get_dir_name(dir_name);
-    printf("Directory %s deleted\n", dir_name);
+    
+    int result;
+
+    #ifdef _WIN32
+        result = _rmdir(dir_name);
+    #else
+        result = rmdir(dir_name);
+    #endif
+
+    if (-1 == result)
+    {
+        perror("Error");
+    }
+    else
+    {
+        printf("Directory %s removed", dir_name);
+    }
 }
 
 void print_current_dir()
