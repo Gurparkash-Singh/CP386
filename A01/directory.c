@@ -1,15 +1,18 @@
 #include <stdio.h>
-#include <string.h>
 #include <unistd.h>
 #include <errno.h>
 #include <sys/stat.h>
 
-#ifdef _win32
+#ifdef _WIN32
     #include <direct.h>
 #endif
 
 void get_dir_name(char * dir_name)
 {
+    /*
+        Auxilliary function to get the name of a directory.
+        Used for creating and removing a directory.
+    */
     printf("Enter directory name: ");
     if( NULL == fgets(dir_name, sizeof(dir_name), stdin))
     {
@@ -17,7 +20,17 @@ void get_dir_name(char * dir_name)
     }
     else
     {
-        dir_name[strcspn(dir_name, "\n")] = 0;
+        // Remove any trailing \n characters
+        for (int i = 0; i < sizeof(dir_name); i++)
+        {
+            if ('\0' == dir_name[i] && 1 < i)
+            {
+                if ('\n' == dir_name[i-1])
+                {
+                    dir_name[i - 1] = '\0';
+                }
+            }
+        }
     }
     fflush(stdin);
 }
@@ -37,7 +50,14 @@ void make_dir()
 
     if (-1 == result)
     {
-        perror("Error");
+        if (EEXIST == errno)
+        {
+            printf("Directory %s exists", dir_name);
+        }
+        else
+        {
+            perror("Error");
+        }
     }
     else
     {
@@ -62,6 +82,9 @@ void print_current_dir()
 
 void move_to_parent_dir()
 {
+    chdir("..");
+    printf("Directory Changed\n");
+    print_current_dir();
 }
 
 void list_dir_structure()
@@ -134,6 +157,7 @@ int main()
             default:
                 printf("Invalid Input! Please try again.\n");
         }
+        printf("\n");
     } while ('q' != op_code && 'Q' != op_code);
 
     // This portion of the code should always exit gracefully.
