@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
 #include <sys/stat.h>
+#include <dirent.h>
 
 #ifdef _WIN32
     #include <direct.h>
@@ -37,6 +39,9 @@ void get_dir_name(char * dir_name)
 
 void make_dir()
 {
+    /*
+        Creates a directory on Windows, Unix/Linux systems.
+    */
     char dir_name[100];
     get_dir_name(dir_name);
 
@@ -67,6 +72,9 @@ void make_dir()
 
 void remove_dir()
 {
+    /*
+        Removes an empty directory on Windows, Unix/Linux Systems.
+    */
     char dir_name[100];
     get_dir_name(dir_name);
     
@@ -90,6 +98,9 @@ void remove_dir()
 
 void print_current_dir()
 {
+    /*
+        Switches to parent directory
+    */
     char current_dir[100];
 
     getcwd(current_dir, sizeof(current_dir));
@@ -98,6 +109,9 @@ void print_current_dir()
 
 void move_to_parent_dir()
 {
+    /*
+        Moves to parent directory.
+    */
     chdir("..");
     printf("Directory Changed\n");
     print_current_dir();
@@ -105,10 +119,30 @@ void move_to_parent_dir()
 
 void list_dir_structure()
 {
+    /*
+        Lists all files and directories in the current directory.
+    */
+    DIR *d;
+    struct dirent *dir;
+
+    d = opendir(".");
+
+    if (d != NULL)
+    {
+        while ((dir = readdir(d)) != NULL)
+        {
+            printf("%s\n", dir->d_name);
+        }
+        closedir(d);
+    }
 }
 
 void close_dir()
 {
+    /*
+        Exits the program
+    */
+    exit(0);
 }
 
 char menu()
