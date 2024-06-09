@@ -1,0 +1,28 @@
+The output of: ls -lah : is
+>>>>>>>>>>>>>>>
+total 976
+drwxr-xr-x  12 gurparkashrandhawa  staff   384B  8 Jun 22:52 .
+drwxr-xr-x   8 gurparkashrandhawa  staff   256B 29 May 17:26 ..
+-rw-r--r--@  1 gurparkashrandhawa  staff   6.0K  8 Jun 22:00 .DS_Store
+-rw-r--r--   1 gurparkashrandhawa  staff    12K  8 Jun 22:52 .process_management.c.swp
+-rw-r--r--@  1 gurparkashrandhawa  staff   430K 29 May 17:25 Assignment 2.pdf
+-rw-r--r--@  1 gurparkashrandhawa  staff   488B  8 Jun 22:02 Makefile-Q1
+-rw-r--r--@  1 gurparkashrandhawa  staff   497B  8 Jun 22:00 Makefile-Q2
+-rw-r--r--@  1 gurparkashrandhawa  staff   2.5K  8 Jun 22:12 collatz_sequence.c
+-rwxr-xr-x   1 gurparkashrandhawa  staff   9.3K  8 Jun 22:52 process_management
+-rw-r--r--@  1 gurparkashrandhawa  staff   3.1K  8 Jun 22:52 process_management.c
+-rw-r--r--   1 gurparkashrandhawa  staff    50B  8 Jun 22:49 sample_in_process.txt
+-rw-r--r--   1 gurparkashrandhawa  staff   139B  8 Jun 22:13 start_numbers.txt
+<<<<<<<<<<<<<<<
+The output of: pwd : is
+>>>>>>>>>>>>>>>
+/Users/gurparkashrandhawa/Documents/Courses/Github/CP386/Assignments/A02
+<<<<<<<<<<<<<<<
+The output of: echo makefile : is
+>>>>>>>>>>>>>>>
+makefile
+<<<<<<<<<<<<<<<
+The output of: echo collatz_sequence.c : is
+>>>>>>>>>>>>>>>
+collatz_sequence.c
+<<<<<<<<<<<<<<<

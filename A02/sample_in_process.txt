@@ -1,0 +1,4 @@
+ls -lah
+pwd
+echo makefile
+echo collatz_sequence.c
